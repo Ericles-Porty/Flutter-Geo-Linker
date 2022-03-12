@@ -9,12 +9,7 @@ class Address {
   late String zipcode;
   late Geo geo;
 
-  Address(
-      {required this.street,
-      required this.suite,
-      required this.city,
-      required this.zipcode,
-      required this.geo});
+  Address({required this.street, required this.suite, required this.city, required this.zipcode, required this.geo});
 
   Address.fromJson(Map<String, dynamic> json) {
     street = json['street'];
@@ -30,7 +25,9 @@ class Address {
     data['suite'] = suite;
     data['city'] = city;
     data['zipcode'] = zipcode;
-    data['geo'] = geo.toJson();
+    if (geo != null) {
+      data['geo'] = geo!.toJson();
+    }
     return data;
   }
 }
